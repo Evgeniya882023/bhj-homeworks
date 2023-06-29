@@ -24,17 +24,15 @@ function game(deadMole, lostMole) {
 	console.log(deadMole, lostMole);
 	if (dead == 10) {
 		alert("Победа");
-		dead = 0;
 		deadMole.textContent = dead;
-		lost = 0;
 		lostMole.textContent = lost;
+		location.reload();
 
 	} else if (lost == 5) {
 		alert("Вы проиграли!");
-		dead = 0;
 		deadMole.textContent = dead;
-		lost = 0;
 		lostMole.textContent = lost;
+		location.reload();
 	};
 	
 };
