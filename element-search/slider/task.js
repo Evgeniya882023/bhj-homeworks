@@ -2,18 +2,18 @@ let slides = Array.from(document.querySelectorAll(".slider__item"));
 let arrowPrev = document.querySelector(".slider__arrow_prev");
 let arrowNext = document.querySelector(".slider__arrow_next");
 
-function activeSlide() {
-	let slider = 0;
-	let index = findIndex(slides.classList.contains("slider__item_active"));
-	slides[index].classList.remove("slider__item_active");
+let index = 0;
 
-	if (slider < 0) {
-		slides[length - 1].classList.add("slider__item_active");
-	} else if (slider > slides.length - 1 || slider >= slides.length) {
-		slides[0].classList.add("slider__item_active");
-	} else {
-		slides[slider].classList.add("slider__item_active");
-	}
+function nextSlide() {
+    slides[index].classList.remove('slider__item_active');
+    index = (index + 1) % slides.length;
+    slides[index].classList.add('slider__item_active');
+}
+
+function prevSlide() {
+    slides[index].classList.remove('slider__item_active');
+    index = ((index - 1) + slides.length) % slides.length;
+    slides[index].classList.add('slider__item_active');
 }
 
 arrowNext.onclick = () => {
@@ -23,7 +23,8 @@ arrowNext.onclick = () => {
 	} else {
 		slider++;
 	}
-	activeSlide(slider);
+	nextSlide();
+	
 }
 
 arrowPrev.onclick = () => {
@@ -33,8 +34,10 @@ arrowPrev.onclick = () => {
 	} else {
 		slider--;
 	}
-	activeSlide();
+	prevSlide();
+	
 }
+
 
 
 
