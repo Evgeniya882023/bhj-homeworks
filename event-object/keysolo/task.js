@@ -17,6 +17,21 @@ class Game {
   }
 
   registerEvents() {
+    let inputSymbol;
+    let _this = this;
+		function process (event) {
+			let symbol = _this.currentSymbol.textContent.toUpperCase();
+			inputSymbol = String.fromCharCode(event.keyCode);
+
+			if (symbol == inputSymbol) {
+				_this.success();
+			} else {
+				_this.fail();
+			}
+		}
+
+		document.addEventListener('keydown', process);
+    
     /*
       TODO:
       Написать обработчик события, который откликается
