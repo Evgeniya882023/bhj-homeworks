@@ -1,9 +1,13 @@
 const fontSize = Array.from(document.querySelectorAll('.font-size'));
 const book = document.querySelector('.book');
-for (let el of fontSize) {
-	el.onclick = function() {
-		el.classList.add('font-size_active');
 
+for (let el of fontSize) {
+
+	el.onclick = function() {
+		for (let el of fontSize) {
+			el.classList.remove('font-size_active');
+		}
+		el.classList.add('font-size_active');
 		let dataSize = el.getAttribute("data-size");
 		if (dataSize == 'big') {
 			book.className = "book_fs-big";
@@ -14,4 +18,4 @@ for (let el of fontSize) {
 		}
 		return false;
 	}
-}  
+}
